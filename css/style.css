@@ -1148,6 +1148,10 @@ html.with-fancybox body.hide-scrollbar {
 }
 .section-main-box .box-inner-wrap .photo-cloud {
   z-index: 6;
+  transition: transform ease 1s;
+}
+.section-main-box .box-inner-wrap .photo-cloud:hover {
+  animation: leftright 1.25s infinite;
 }
 .section-main-box .box-inner-wrap .photo-health {
   z-index: 4;
@@ -1838,6 +1842,17 @@ select.form-input:required:invalid {
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes leftright {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 @keyframes animation01 {

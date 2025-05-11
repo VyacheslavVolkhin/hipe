@@ -254,6 +254,10 @@
 		}
 		.photo-cloud {
 			z-index: 6;
+			transition: transform ease 1s;
+			&:hover {
+				animation: leftright 1.25s infinite;
+			}
 		}
 		.photo-health {
 			z-index: 4;
