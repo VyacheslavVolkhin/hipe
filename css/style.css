@@ -983,8 +983,8 @@ html.with-fancybox body.hide-scrollbar {
 .section-main-box .menu-inner-wrap {
   position: relative;
   z-index: 3;
-  font-size: 27.53px;
-  font-size: 2.753rem;
+  font-size: 25.53px;
+  font-size: 2.553rem;
   line-height: 1.8;
   font-weight: bold;
   text-transform: uppercase;
@@ -1320,7 +1320,10 @@ html.with-fancybox body.hide-scrollbar {
   .section-main-box .header-box {
     margin: 0 -20px 0 0;
   }
-  .section-main-box .menu-inner-wrap {
+  .section-main-box .menu-inner-wrap,
+  .section-main-box .title-main-wrap,
+  .section-main-box .tabs-inner-wrap,
+  .section-main-box .slider-outer-wrap {
     margin-left: 0;
     margin-right: -20px;
   }
@@ -1343,6 +1346,19 @@ html.with-fancybox body.hide-scrollbar {
     margin-right: calc(var(--paddingContainer) * -1 - 20px);
     padding-left: var(--paddingContainer);
     padding-right: var(--paddingContainer);
+  }
+}
+@media (max-width: 767px) {
+  .title-main-wrap.mobile-bg-full .page-title:has(.title-decor) {
+    padding: 0.3em;
+    border-radius: 5rem;
+    background: var(--clr-att);
+  }
+  .title-main-wrap.mobile-bg-full .page-title:has(.title-decor) .title-decor {
+    padding: 0;
+  }
+  .title-main-wrap.mobile-bg-full .page-title:has(.title-decor) .title-decor:before {
+    display: none;
   }
 }
 @media (min-width: 640px) {
@@ -2578,14 +2594,14 @@ input.form-clear-autofill::-webkit-contacts-auto-fill-button {
 \* ----------------------------------- */
 @font-face {
   font-family: 'VAG World';
-  src: local('VAG World Bold'), local('VAGWorld-Bold'), url('../fonts/VAGWorld-Bold.woff2') format('woff2'), url('../fonts/VAGWorld-Bold.woff') format('woff');
+  src: url('../fonts/VAGWorld-Bold.woff2') format('woff2'), url('../fonts/VAGWorld-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'VAG World';
-  src: local('VAG World Bold'), local('VAGWorld-Bold'), url('../fonts/VAGWorld-Bold.woff2') format('woff2'), url('../fonts/VAGWorld-Bold.woff') format('woff');
+  src: url('../fonts/VAGWorld-Bold.woff2') format('woff2'), url('../fonts/VAGWorld-Bold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
