@@ -1,4 +1,21 @@
+
 document.addEventListener("DOMContentLoaded", function() {
+
+	//animate
+	const items = document.querySelectorAll('.item-animation');
+    if (items) {
+		items.forEach((item, index) => {
+        const delay = index * 100; 
+        
+        setTimeout(() => {
+            item.style.animation = `
+                appearAnimation 0.5s ease-out forwards,
+                floatAnimation 3s ease-in-out infinite 0.5s
+            `;
+        }, delay);
+    });
+	}
+	
 
 	//fancybox
 	Fancybox.bind("[data-fancybox]", {
@@ -210,32 +227,47 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	tabsActiveStart()
 
+	
+	
 
-	//slider products
-	const swiperSliderProducts = new Swiper('.slider-products .swiper', {
-		loop: false,
-		slidesPerView: 1,
+	//slider line
+	const swiperSliderCollections = new Swiper('.slider-collections .swiper',
+	{
+		loop: true,
+		slidesPerGroup: 1,
+		slidesPerView: 'auto',
 		spaceBetween: 0,
 		autoHeight: false,
-		speed: 400,
-		pagination: {
-			el: '.slider-products-pagination',
-			clickable: true,
+		speed: 40000,
+		pagination: false,
+		centeredSlides: true,
+		initialSlide: 5,
+		allowTouchMove: false,
+		autoplay: {
+			delay: 0,
+			disableOnInteraction: false,
 		},
-		autoplay: false,
-		navigation: {
-			nextEl: '.btn-action-ico.ico-arrow.ico-arrow-next.button-slider-products-next',
-			prevEl: '.btn-action-ico.ico-arrow.ico-arrow-prev.button-slider-products-prev',
+		navigation: false,
+	});
+
+	//slider photos
+	const swiperSliderPhotos = new Swiper('.slider-photos .swiper',
+	{
+		loop: true,
+		slidesPerGroup: 1,
+		slidesPerView: 'auto',
+		spaceBetween: 0,
+		autoHeight: false,
+		speed: 40000,
+		pagination: false,
+		centeredSlides: true,
+		initialSlide: 5,
+		allowTouchMove: false,
+		autoplay: {
+			delay: 0,
+			disableOnInteraction: false,
 		},
-		breakpoints: {
-			640: {
-				slidesPerView: 3,
-			},
-			1024: {
-				slidesPerView: 3,
-			},
-		},
-	
+		navigation: false,
 	});
 
 
@@ -244,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		loop: false,
 		slidesPerView: 1,
 		spaceBetween: 0,
-		autoHeight: true,
+		autoHeight: false,
 		speed: 400,
 		pagination: {
 			el: '.slider-catalog-pagination',

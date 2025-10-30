@@ -1,7 +1,7 @@
 :root {
 	--clr-base: #000000;
-	--clr-att: #ff2e5b;
-	--clr-att-hover: #ff5c7f;
+	--clr-att: #86189c;
+	--clr-att-hover: #cd6be0;
 	--clr-light: #e4e4e;
 
 	--fsize: 16px;
@@ -12,7 +12,7 @@
 	--icoSize: 24px;
 
 	--min: 360px;
-	--max: 1000px;
+	--max: 1080px;
     
     --paddingContainer: 15px;
 
@@ -35,9 +35,9 @@ BwModelicaCyrillicSS01DEMO 500
  */
 
 .ftext {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', 'Roboto', sans-serif;
 	* {
-		font-family: 'Montserrat', sans-serif;
+		font-family: 'Montserrat', 'Roboto', sans-serif;
 	}
 }
 /* ----------------------------------- *\
@@ -48,6 +48,7 @@ body {
 	background: #fff;
     font-size: var(--fsize);
     line-height: var(--lhsize);
+	font-weight: 500;
 }
 p, ul, ol, table, blockquote, .bq-text {
 	position: relative;
@@ -158,24 +159,26 @@ h6, .h6-title {
 	line-height: (48/39);
 }
 .h1-title, h1 {
-	font-size: 3rem;
+	font-size: 5.17rem;
 	text-transform: uppercase;
-	font-weight: bold;
+	font-weight: 500;
 }
 .title-decor {
 	display: inline-block;
 	position: relative;
 	z-index: 2;
-	color: #fff;
+	color: #bff800;
+	font-size: (51.59/39.24em);
+	line-height: 1;
 	&:before {
 		content: "";
 		display: block;
 		position: absolute;
-		top: 0.1em;
-		bottom: -0.2em;
-		left: -1.7em;
-		right: -1.7em;
-		background: var(--clr-att);
+		top: -0.05em;
+		bottom: -0.05em;
+		left: -1.2em;
+		right: -1.2em;
+		background: #86189c;
 		border-radius: 50px;
 		z-index: -1;
 	}
