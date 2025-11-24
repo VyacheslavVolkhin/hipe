@@ -1,7 +1,8 @@
 :root {
 	--clr-base: #000000;
-	--clr-att: #86189c;
-	--clr-att-hover: #cd6be0;
+	--clr-att: #ff0000;
+	--clr-att-hover: #d50318;
+	--clr-att-second: #ffde00;
 	--clr-light: #e4e4e;
 
 	--fsize: 16px;
@@ -159,7 +160,7 @@ h6, .h6-title {
 	line-height: (48/39);
 }
 .h1-title, h1 {
-	font-size: 5.17rem;
+	font-size: 4.167rem;
 	text-transform: uppercase;
 	font-weight: 500;
 }
@@ -167,9 +168,11 @@ h6, .h6-title {
 	display: inline-block;
 	position: relative;
 	z-index: 2;
-	color: #bff800;
+	color: #fff;
 	font-size: (51.59/39.24em);
 	line-height: 1;
+	min-width: 400px;
+	max-width: 100%;
 	&:before {
 		content: "";
 		display: block;
@@ -178,7 +181,7 @@ h6, .h6-title {
 		bottom: -0.05em;
 		left: -1.2em;
 		right: -1.2em;
-		background: #86189c;
+		background: var(--clr-att);
 		border-radius: 50px;
 		z-index: -1;
 	}
@@ -191,6 +194,9 @@ h6, .h6-title {
 }
 .text-att, .title-att {
 	color: var(--clr-att);
+}
+.text-att-second, .title-att-second {
+	color: var(--clr-att-second);
 }
 .text-line, .title-line {
 	white-space: nowrap;
@@ -211,6 +217,9 @@ h6, .h6-title {
     :root {
         font-size: 9px;
     }
+	.title-decor {
+		min-width: 0;
+	}
 }
 @media (max-width: 767px) {
     :root {

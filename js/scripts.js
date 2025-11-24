@@ -8,18 +8,88 @@ document.addEventListener("DOMContentLoaded", function() {
         const delay = index * 100; 
         
         setTimeout(() => {
-            item.style.animation = `
-                appearAnimation 0.5s ease-out forwards,
-                floatAnimation 3s ease-in-out infinite 0.5s
-            `;
-        }, delay);
-    });
+				item.style.animation = `
+					appearAnimation 0.5s ease-out forwards,
+					floatAnimation 3s ease-in-out infinite 0.5s
+				`;
+			}, delay);
+		});
 	}
+
+
+	//files add
+	const fileBlocks = document.querySelectorAll('.js-field-file');
+	
+	fileBlocks.forEach(fileBlock => {
+		const fileInput = fileBlock.querySelector('.js-field-input');
+		const fileAttachButton = fileBlock.querySelector('.js-file-button-attach');
+		const fileDeleteButton = fileBlock.querySelector('.js-file-button-del');
+		const fileName = fileBlock.querySelector('.file-name');
+	
+		fileAttachButton.addEventListener('click', function() {
+			fileInput.click();
+		});
+	
+		fileInput.addEventListener('change', function() {
+			if (fileInput.files.length > 0) {
+				fileName.textContent = fileInput.files[0].name;
+				fileBlock.classList.add('file-active');
+			} else {
+				fileName.textContent = '';
+				fileBlock.classList.remove('file-active');
+			}
+		});
+	
+		fileDeleteButton.addEventListener('click', function(e) {
+			e.preventDefault();
+			fileName.textContent = '';
+			fileBlock.classList.remove('file-active');
+			fileInput.value = null;
+		});
+	});
 	
 
 	//fancybox
 	Fancybox.bind("[data-fancybox]", {
 		//settings
+	});
+
+
+	//btn tgl and add
+	let tglButtons = document.querySelectorAll('.js-btn-tgl')
+	let addButtons = document.querySelectorAll('.js-btn-add')
+	let buttonsTglOne = document.querySelectorAll('.js-btn-tgl-one');
+	for (i = 0;i < tglButtons.length;i++) {
+		tglButtons[i].addEventListener('click', function(e) {
+			this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active')
+			e.preventDefault()
+			return false
+		})
+	}
+	for (i = 0;i < addButtons.length;i++) {
+		addButtons[i].addEventListener('click', function(e) {
+			if (!this.classList.contains('active')) {
+				this.classList.add('active');
+				e.preventDefault()
+				return false
+			}
+		})
+	}
+	buttonsTglOne.forEach(function(button) {
+		button.addEventListener('click', function(e) {
+			e.preventDefault();
+			let toggleButtonsWrap = this.closest('.js-toggle-buttons');
+	
+			if (this.classList.contains('active')) {
+				this.classList.remove('active');
+			} else {
+				toggleButtonsWrap.querySelectorAll('.js-btn-tgl-one').forEach(function(btn) {
+					btn.classList.remove('active');
+				});
+				this.classList.add('active');
+			}
+			return false;
+		});
 	});
 
 
@@ -250,25 +320,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		navigation: false,
 	});
 
-	//slider photos
-	const swiperSliderPhotos = new Swiper('.slider-photos .swiper',
-	{
-		loop: true,
-		slidesPerGroup: 1,
-		slidesPerView: 'auto',
-		spaceBetween: 0,
-		autoHeight: false,
-		speed: 40000,
-		pagination: false,
-		centeredSlides: true,
-		initialSlide: 5,
-		allowTouchMove: false,
-		autoplay: {
-			delay: 0,
-			disableOnInteraction: false,
-		},
-		navigation: false,
-	});
 
 
 	//slider catalog
@@ -301,35 +352,137 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	});
 
-	//slider partners
-	const swiperSliderPartners = new Swiper('.slider-partners .swiper', {
-		loop: false,
-		slidesPerView: 2,
-		spaceBetween: 0,
-		autoHeight: true,
-		speed: 400,
-		pagination: {
-			el: '.slider-partners-pagination',
-			clickable: true,
-		},
-		autoplay: false,
-		navigation: {
-			nextEl: '.btn-action-ico.ico-arrow.ico-arrow-next.button-slider-partners-next',
-			prevEl: '.btn-action-ico.ico-arrow.ico-arrow-prev.button-slider-partners-prev',
-		},
-		breakpoints: {
-			480: {
-				slidesPerView: 3,
-			},
-			768: {
-				slidesPerView: 4,
-			},
-			1024: {
-				slidesPerView: 4,
-			},
-		},
+
+	//slider photos
+	const slidersphotos = document.querySelectorAll(".slider-photos");
 	
+	slidersphotos.forEach((container) => {
+		const swiperEl = container.querySelector(".swiper");
+		const nextEl = container.querySelector(".button-slider-photos-next");
+		const prevEl = container.querySelector(".button-slider-photos-prev");
+	
+		if (!swiperEl) return;
+	
+		new Swiper(swiperEl, {
+			loop: false,
+			slidesPerGroup: 1,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			autoHeight: false,
+			speed: 400,
+			pagination: false,
+			autoplay: false,
+			navigation: {
+				nextEl: nextEl,
+				prevEl: prevEl,
+			},
+			breakpoints: {
+				480: { slidesPerView: 2 },
+				640: { slidesPerView: 3 },
+				768: { slidesPerView: 4 },
+			},
+		});
 	});
+
+
+	//slider cards
+	const sliderscards = document.querySelectorAll(".slider-cards");
+	
+	sliderscards.forEach((container) => {
+		const swiperEl = container.querySelector(".swiper");
+		const nextEl = container.querySelector(".button-slider-cards-next");
+		const prevEl = container.querySelector(".button-slider-cards-prev");
+	
+		if (!swiperEl) return;
+	
+		new Swiper(swiperEl, {
+			loop: false,
+			slidesPerGroup: 1,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			autoHeight: false,
+			speed: 400,
+			
+			pagination: {
+				el: '.slider-cards-pagination',
+				clickable: true,
+			},
+			autoplay: false,
+			navigation: {
+				nextEl: nextEl,
+				prevEl: prevEl,
+			},
+			breakpoints: {
+				480: { slidesPerView: 2 },
+				640: { slidesPerView: 3 },
+			},
+		});
+	});
+
+
+	//slider partners
+	const sliderspartners = document.querySelectorAll(".slider-partners");
+	
+	sliderspartners.forEach((container) => {
+		const swiperEl = container.querySelector(".swiper");
+		const nextEl = container.querySelector(".button-slider-partners-next");
+		const prevEl = container.querySelector(".button-slider-partners-prev");
+	
+		if (!swiperEl) return;
+	
+		new Swiper(swiperEl, {
+			loop: false,
+			slidesPerView: 2,
+			spaceBetween: 0,
+			autoHeight: true,
+			speed: 400,
+			pagination: {
+				el: '.slider-partners-pagination',
+				clickable: true,
+			},
+			autoplay: false,
+			navigation: {
+				nextEl: '.btn-action-ico.ico-arrow.ico-arrow-next.button-slider-partners-next',
+				prevEl: '.btn-action-ico.ico-arrow.ico-arrow-prev.button-slider-partners-prev',
+			},
+			breakpoints: {
+				480: {
+					slidesPerView: 3,
+				},
+				768: {
+					slidesPerView: 4,
+				},
+				1024: {
+					slidesPerView: 4,
+				},
+			},
+		});
+	});
+	
+
+	//slider slider-giftcards
+	const swiperSliderGiftCards = new Swiper('.slider-giftcards .swiper',
+	{
+		loop: true,
+		slidesPerGroup: 1,
+		slidesPerView: 'auto',
+		spaceBetween: 0,
+		autoHeight: false,
+		speed: 10000,
+		pagination: false,
+		centeredSlides: true,
+		initialSlide: 5,
+		allowTouchMove: true,
+		freeMode: true,
+		autoplay: {
+			delay: 0,
+			disableOnInteraction: true,
+		},
+		navigation: false,
+	});
+
+	
+
 
 	
 

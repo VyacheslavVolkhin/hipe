@@ -1,6 +1,54 @@
 /* ----------------------------------- *\
 			forms elements styles
 \* ----------------------------------- */
+.frm-field-file {
+	position: relative;
+	&.file-active {
+		.file-inner-wrap {
+			display: inline-block;
+		}
+		.button-file-attach {
+			display: none;
+		}
+	}
+	input {
+		display: none;
+	}
+	.file-inner-wrap {
+		display: none;
+		max-width: 100%;
+		padding: 0 30px 0 0;
+		font-size: 3rem;
+		text-transform: none;
+		position: relative;
+		color: #fff;
+		.file-name {
+			display: block;
+			position: relative;
+			max-width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.button-file-del {
+			width: 24px;height: 24px;
+			position: absolute;
+			top: 50%;right: 0;
+			margin-top: -13px;
+		}
+	}
+	.button-file-attach {
+		height: 7.2rem;
+		width: 100%;
+		border-radius: 4rem;
+		background: var(--clr-att-second);
+		border: none;
+		padding: 0 24px;
+		font-size: 4.2rem;
+		color: var(--clr-base);
+		text-transform: uppercase;
+	}
+}
 .frm-row,
 .frm-field,
 .frm-row-submit {
